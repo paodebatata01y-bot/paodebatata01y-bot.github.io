@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>PEGADINHA 😈</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }#texto {
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+
+#texto:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.shake {
+  animation: shake 0.2s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(3px, 3px); }
+  25% { transform: translate(-3px, -3px); }
+  50% { transform: translate(3px, -3px); }
+  75% { transform: translate(-3px, 3px); }
+  100% { transform: translate(3px, 3px); }
+}
+
+.flash {
+  animation: flash 0.2s infinite;
+}
+
+@keyframes flash {
+  0% { background: red; }
+  50% { background: black; }
+  100% { background: red; }
+}
+
+#img {
+  position: absolute;
+  width: 200px;
+  display: none;
+}
+
+  </style>
+</head>
+<body><div id="texto">Renato, clica aqui urgente 👀</div><img id="img" src="https://i.imgur.com/3ZQ3Z6b.png"><audio id="audio" src="https://www.myinstants.com/media/sounds/trollolol.mp3"></audio>
+
+<script>
+  const texto = document.getElementById("texto");
+  const audio = document.getElementById("audio");
+  const img = document.getElementById("img");
+
+  texto.onclick = () => {
+    texto.innerHTML = "TE PEGUEI KKKKK 🤡🖕";
+    audio.play();
+
+    document.body.classList.add("shake");
+    document.body.classList.add("flash");
+
+    img.style.display = "block";
+
+    setInterval(() => {
+      img.style.top = Math.random() * 80 + "%";
+      img.style.left = Math.random() * 80 + "%";
+    }, 200);
+
+    setInterval(() => {
+      alert("KKKKKK TU CAIU 🤡");
+    }, 3000);
+  }
+</script></body>
+</html>
