@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quem é mais bonito? 😏</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #ff0080, #7928ca, #00ffff);
+      background-size: 400% 400%;
+      animation: bg 8s infinite;
+      font-family: Arial;
+      overflow: hidden;
+    }
+
+    @keyframes bg {
+      0% {background-position: 0%}
+      50% {background-position: 100%}
+      100% {background-position: 0%}
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .botoes {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #renato {
+      background: red;
+      color: white;
+      left: 20px;
+      top: 80px;
+    }
+
+    #bernardo {
+      background: green;
+      color: white;
+      right: 20px;
+      top: 80px;
+    }
+
+    .msg {
+      position: absolute;
+      color: yellow;
+      font-weight: bold;
+      font-size: 20px;
+      animation: aparecer 1s linear forwards;
+    }
+
+    @keyframes aparecer {
+      0% {opacity: 0; transform: scale(0.5);}
+      100% {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+
+<h1>Quem é mais bonito? 😏</h1>
+
+<div class="botoes">
+  <button id="renato" onmouseover="fugir()">Renato 🤡</button>
+  <button id="bernardo" onclick="ganhou()">Bernardo 😎</button>
+</div>
+
+<audio id="romantica" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<script>
+  function fugir() {
+    let btn = document.getElementById("renato");
+    let x = Math.random() * 250;
+    let y = Math.random() * 150;
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+  }
+
+  function ganhou() {
+    document.getElementById("romantica").play();
+
+    let textos = [
+      "ACERTOU 😍",
+      "ELE É LINDO 😎",
+      "VEM PRA MINHA CASA 😳",
+      "PERFEITO DEMAIS 🔥",
+      "DEUS ABENÇOOU 🙏"
+    ];
+
+    for (let i = 0; i < 15; i++) {
+      let msg = document.createElement("div");
+      msg.className = "msg";
+      msg.innerText = textos[Math.floor(Math.random() * textos.length)];
+
+      msg.style.left = Math.random() * window.innerWidth + "px";
+      msg.style.top = Math.random() * window.innerHeight + "px";
+
+      document.body.appendChild(msg);
+    }
+  }
+</script>
+
+</body>
+</html>
